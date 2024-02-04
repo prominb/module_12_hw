@@ -1,7 +1,9 @@
 test_dir/
 test123.py
 book.json
+book.bin
 test.json
+test.bin
 
 # Created by https://www.toptal.com/developers/gitignore/api/windows,python,visualstudiocode,pycharm
 # Edit at https://www.toptal.com/developers/gitignore?templates=windows,python,visualstudiocode,pycharm
