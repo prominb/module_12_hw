@@ -1,6 +1,6 @@
 from collections import UserDict
 from datetime import datetime
-# import json
+import json
 import pickle
 
 
@@ -128,20 +128,21 @@ class AddressBook(UserDict):
     #             counter += records_number - 1
 
     def save_to_file(self, filename='book.bin'):
-    # def write_contacts_to_file(self, filename='book.json'):
+    # def save_to_file(self, filename='book.json'):
         with open(filename, "wb") as fh:
         # with open(filename, "w") as fh:
             pickle.dump(self.data, fh)
             # json.dump({"contacts": self.data}, fh)
+            # json.dump(self.data, fh)
 
     def read_from_file(self, filename='book.bin'):
-    # def read_contacts_from_file(self, filename='book.json'):
+    # def read_from_file(self, filename='book.json'):
         try:
             with open(filename, "rb") as fh:
             # with open(filename, "r") as fh:
                 self.data = pickle.load(fh)
-                # unpacked = json.load(fh)
-            return self.data
+                # self.data = json.load(fh)
+            # return self.data
             # return self.data.get('contacts')
         # except Exception as ero:
         #     print(ero)
@@ -153,26 +154,11 @@ class AddressBook(UserDict):
 def main():
     # Створення нової адресної книги
     book = AddressBook()
-    # book.read_contacts_from_file('test.json')
-    # book.write_contacts_to_file('test.json')
-    book.read_from_file()
-    book.save_to_file()
+
     # # Створення запису для John
     # john_record = Record("John")
-    # # john_record = Record("John", "27/02/2024")
-    # # john_record = Record("John", "27/02/2014")
-    # # john_record = Record("John", "3.2.2014")  # WORK
-    # # john_record = Record("John", "27.1.2014")  # WORK
-    # # john_record = Record("John", "27.21.2014")  # WORK
     # john_record.add_phone("1234567890")
     # john_record.add_phone("5555555555")
-    # # john_record.add_phone("555555")  # WORK
-    # # john_record.add_phone("555qq5555")  # WORK
-
-    # # print(john_record.birthday, type(john_record.birthday), repr(john_record.birthday))
-    # # john_record.birthday
-    # # print(john_record.days_to_birthday())
-    # # john_record.days_to_birthday()
 
     # # Додавання запису John до адресної книги
     # book.add_record(john_record)
@@ -182,59 +168,13 @@ def main():
     # jane_record.add_phone("9876543210")
     # book.add_record(jane_record)
 
-    # # # Виведення всіх записів у книзі
-    # # for name, record in book.data.items():
-    # #     print(record)
-
-    # # # Знаходження та редагування телефону для John
-    # # john = book.find("John")
-    # # john.edit_phone("1234567890", "1112223333")
-
-    # # print(john)  # Виведення: Contact name: John, phones: 1112223333; 5555555555
-
-    # # # Пошук конкретного телефону у записі John
-    # # found_phone = john.find_phone("5555555555")
-    # # print(f"{john.name}: {found_phone}")  # Виведення: 5555555555
-
-    # # # Видалення запису Jane
-    # # book.delete("Jane")
-
-
-    # # Виведення всіх записів у книзі
-    # # for name, record in book.data.items():
-    # #     print(record)
-
-
-    # test1_record = Record("Test1")
-    # test1_record.add_phone("1111111111")
-    # book.add_record(test1_record)
-
-    # test2_record = Record("Test2")
-    # test2_record.add_phone("2222222222")
-    # book.add_record(test2_record)
-
-    # test3_record = Record("Test3")
-    # test3_record.add_phone("3333333333")
-    # book.add_record(test3_record)
-
-    # test4_record = Record("Test4")
-    # test4_record.add_phone("4444444444")
-    # book.add_record(test4_record)
-
-    # test5_record = Record("Test5")
-    # test5_record.add_phone("5555555555")
-    # book.add_record(test5_record)
-
-    # test6_record = Record("Test6")
-    # test6_record.add_phone("6666666666")
-    # book.add_record(test6_record)
-
-    # Виведення N записів у книзі
-    # records_generator = book.iterator(5)
-    # for i in records_generator:
-    #     print(i)
-
-    # book.write_contacts_to_file('test.json')
+    # # book.save_to_file('test.json')
+    # book.save_to_file('test.bin')
+    book.read_from_file('test.bin')
+    print(book.data)
+    # Виведення всіх записів у книзі
+    for name, record in book.data.items():
+        print(record)
 
 
 # contact_book = {}
