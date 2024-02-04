@@ -126,6 +126,20 @@ class AddressBook(UserDict):
                 yield value
                 counter += records_number - 1
 
+    def write_contacts_to_file(self, filename='book.json'):
+        with open(filename, "w") as fh:
+            json.dump({"contacts": self.data}, fh)
+
+    def read_contacts_from_file(self, filename='book.json'):
+        try:
+            with open(filename, "r") as fh:
+                unpacked = json.load(fh)
+            return unpacked.get('contacts')
+        except Exception as ero:
+            print(ero)
+        except FileNotFoundError:
+            print('File Not Found.')
+
 
 contact_book = {}
 
@@ -219,18 +233,18 @@ def main():
                 print(show_all_handler(contact_book))
             else:
                 print('=> Invalid command! <=')
-            # print(contact_book)
     except KeyboardInterrupt:
         print("\nAbort the mission")
     finally:
         good_bye()
+
     # # Створення нової адресної книги
     # book = AddressBook()
 
 
 
-# if __name__ == '__main__':
-#     main()
+if __name__ == '__main__':
+    main()
 
 
 # # Створення запису для John
